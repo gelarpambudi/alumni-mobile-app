@@ -8,11 +8,10 @@ import retrofit2.http.POST;
 public class RegisterAPI {
 
     @FormUrlEncoded
-    //TODO Add insert API
     @POST("/insert.php")
     Call<Value> daftar(@Field("Nama") String nama,
                        @Field("Angkatan") String angkatan,
                        @Field("Nomor_HP") String no_hp,
-                       @Field("Email") String email);
+                       @Field("Email") String email)
 
 }
