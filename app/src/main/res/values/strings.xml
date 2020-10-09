@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Alumni Mobile App</string>
+    <string name="nama">Nama Lengkap</string>
+    <string name="angkatan">Angkatan</string>
+    <string name="no_hp">Nomor HP</string>
+    <string name="email">Email</string>
 </resources>
