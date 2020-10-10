@@ -19,7 +19,7 @@
             android:id="@+id/editTextNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="textCapWords"
             android:hint="@string/nama"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +58,7 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapCharacters"
+            android:inputType="textEmailAddress"
             android:hint="@string/email"/>
 
     </com.google.android.material.textfield.TextInputLayout>

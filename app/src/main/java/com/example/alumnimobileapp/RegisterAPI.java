@@ -5,14 +5,12 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
-public class RegisterAPI {
+public interface RegisterAPI {
 
     @FormUrlEncoded
-    @POST("hello.php")
-    Call<Value> daftar(@Field("Nama") String nama,
-                       @Field("Angkatan") String angkatan,
-                       @Field("Nomor_HP") String no_hp,
-                       @Field("Email") String email) {
-        return null;
-    }
+    @POST("insert.php")
+    Call<Value> daftar(@Field("nama") String nama,
+                       @Field("angkatan") String angkatan,
+                       @Field("no_hp") String no_hp,
+                       @Field("email") String email);
 }
