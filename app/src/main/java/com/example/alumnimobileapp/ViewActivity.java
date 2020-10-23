@@ -30,7 +30,7 @@ public class ViewActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

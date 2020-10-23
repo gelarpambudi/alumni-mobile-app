@@ -15,6 +15,6 @@ public interface RegisterAPI {
                        @Field("no_hp") String no_hp,
                        @Field("email") String email);
 
-    @GET("view.php")
+    @GET("read.php")
     Call<Value> view();
 }

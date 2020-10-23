@@ -4,7 +4,7 @@ public class Result {
 
     String nama;
     String angkatan;
-    String no_hp;
+    String nomor_hp;
     String email;
 
     public String getNama() {
@@ -16,7 +16,7 @@ public class Result {
     }
 
     public String getNo_hp() {
-        return no_hp;
+        return nomor_hp;
     }
 
     public String getEmail() {
