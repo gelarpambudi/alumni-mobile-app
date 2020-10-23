@@ -16,8 +16,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//import android.support.annotation.CallSuper;
-//import android.support.annotation.UiThread;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -46,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         RegisterAPI api = retrofit.create(RegisterAPI.class);
         Call<Value> call = api.daftar(nama, angkatan, no_hp, email);
+
         call.enqueue(new Callback<Value>() {
             @Override
             public void onResponse(Call<Value> call, Response<Value> response) {
