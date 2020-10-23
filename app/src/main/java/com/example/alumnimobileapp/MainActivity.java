@@ -3,6 +3,7 @@ package com.example.alumnimobileapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @OnClick(R.id.buttonLihat) void lihat() {
+        startActivity(new Intent(MainActivity.this, ViewActivity.class));
     }
 
     @Override
