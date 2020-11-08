@@ -3,6 +3,7 @@ package com.example.alumnimobileapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ViewActivity extends AppCompatActivity {
+public class ViewActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     public static final String URL = "http://gpa-alumni.000webhostapp.com/";
     private List<Result> results = new ArrayList<>();
@@ -88,6 +90,27 @@ public class ViewActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadDataAlumni();
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        final MenuItem item = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setQueryHint("Cari Nama Alumni");
+        searchView.setIconified(false);
+        searchView.setOnQueryTextListener(this);
+        return true;
     }
 
 }
