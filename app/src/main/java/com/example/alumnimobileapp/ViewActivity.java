@@ -84,4 +84,10 @@ public class ViewActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDataAlumni();
+    }
+
 }

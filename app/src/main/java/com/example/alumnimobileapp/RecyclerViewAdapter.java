@@ -3,6 +3,7 @@ package com.example.alumnimobileapp;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return results.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.textNama)
         TextView textViewNama;
@@ -60,6 +61,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            String nama = textViewNama.getText().toString();
+            String angkatan = textViewNama.getText().toString();
+            String no_hp = textViewNomorHP.getText().toString();
+            String email = textViewEmail.getText().toString();
+
+            Intent i = new Intent(context, UpdateActivity.class);
+            i.putExtra("nama", nama);
+            i.putExtra("angkatan", angkatan);
+            i.putExtra("no_hp", no_hp);
+            i.putExtra("email", email);
+            context.startActivity(i);
         }
 
     }
