@@ -24,4 +24,8 @@ public interface RegisterAPI {
                        @Field("angkatan") String angkatan,
                        @Field("no_hp") String no_hp,
                        @Field("email") String email);
+
+    @FormUrlEncoded
+    @POST("search.php")
+    Call<Value> search(@Field("search") String search);
 }

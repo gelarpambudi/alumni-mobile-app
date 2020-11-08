@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +99,33 @@ public class ViewActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        return false;
+        recyclerView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RegisterAPI api = retrofit.create(RegisterAPI.class);
+        Call<Value> call = api.search(newText);
+        call.enqueue(new Callback<Value>() {
+            @Override
+            public void onResponse(Call<Value> call, Response<Value> response) {
+                String value = response.body().getValue();
+                progressBar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+                if (value.equals("1")) {
+                    results = response.body().getResult();
+                    viewAdapter = new RecyclerViewAdapter(ViewActivity.this, results);
+                    recyclerView.setAdapter(viewAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Value> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+        return true;
     }
 
     @Override
