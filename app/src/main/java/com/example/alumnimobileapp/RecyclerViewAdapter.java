@@ -67,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public void onClick(View view) {
             String nama = textViewNama.getText().toString();
-            String angkatan = textViewNama.getText().toString();
+            String angkatan = textViewAngkatan.getText().toString();
             String no_hp = textViewNomorHP.getText().toString();
             String email = textViewEmail.getText().toString();
 
