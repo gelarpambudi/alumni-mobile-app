@@ -71,10 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.buttonLihat) void lihat() {
-        startActivity(new Intent(MainActivity.this, ViewActivity.class));
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
