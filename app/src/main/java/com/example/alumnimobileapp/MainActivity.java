@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String URL = "http://gpa-alumni.000webhostapp.com/";
+    public static final String URL = "https://gpa-alumni.000webhostapp.com/";
     private ProgressDialog progress;
 
     @BindView(R.id.editTextNama) EditText editTextNama;
