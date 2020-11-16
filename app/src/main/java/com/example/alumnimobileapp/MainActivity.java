@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         String no_hp = editTextHP.getText().toString();
         String email = editTextEmail.getText().toString();
 
-        if (isEmailValid(email)) {
+        if (isEmailValid(email) && isPhoneNumberValid(no_hp)) {
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(URL)
@@ -73,10 +73,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-        } else {
+        } else if ((isEmailValid(email) == false) && isPhoneNumberValid(no_hp)){
             progress.dismiss();
             Toast.makeText(MainActivity.this, "Format Email Salah", Toast.LENGTH_SHORT).show();
+        } else if (isEmailValid(email)  && (isPhoneNumberValid(no_hp) == false)){
+            progress.dismiss();
+            Toast.makeText(MainActivity.this, "Format Nomor HP Salah", Toast.LENGTH_SHORT).show();
+        } else if ((isEmailValid(email) == false) && (isPhoneNumberValid(no_hp) == false)){
+            progress.dismiss();
+            Toast.makeText(MainActivity.this, "Format Email dan Nomor HP Salah", Toast.LENGTH_SHORT).show();
         }
+
+
 
     }
 
@@ -98,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         else
             return false;
+    }
+
+    public boolean isPhoneNumberValid(String number)
+    {
+        return android.util.Patterns.PHONE.matcher(number).matches();
     }
 
     @Override
