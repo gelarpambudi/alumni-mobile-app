@@ -7,4 +7,6 @@
 
     <string name="register">Daftar</string>
     <string name="view">Lihat dan Update Data Alumni</string>
+    <string name="alumni_mobile_app">Alumni Mobile App</string>
+
 </resources>

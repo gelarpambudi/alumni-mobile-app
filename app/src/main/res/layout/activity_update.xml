@@ -4,70 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/waew_min"
     android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".UpdateActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFFFFF">
 
         <EditText
             android:id="@+id/editTextNama"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#3EC64D4D"
+            android:hint="@string/nama"
             android:inputType="textCapWords"
-            android:hint="@string/nama"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColorLink="#989393"
+            android:textCursorDrawable="?android:attr/textCursorDrawable" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFFFFF">
 
         <EditText
             android:id="@+id/editTextAngkatan"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:hint="@string/angkatan"/>
+            android:background="#3EC64D4D"
+            android:hint="@string/angkatan"
+            android:inputType="textCapWords" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFFFFF">
 
         <EditText
             android:id="@+id/editTextHP"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapCharacters"
-            android:hint="@string/no_hp"/>
+            android:background="#3EC64D4D"
+            android:hint="@string/no_hp"
+            android:inputType="textCapCharacters" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFFFFF">
 
         <EditText
             android:id="@+id/editTextEmail"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"/>
+            android:background="#3EC64D4D"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonUbah"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ubah Data"/>
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button"
+        android:textColor="@android:color/white"
+        android:text="Ubah Data" />
 
 </LinearLayout>
