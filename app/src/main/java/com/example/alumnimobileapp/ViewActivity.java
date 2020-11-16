@@ -133,7 +133,7 @@ public class ViewActivity extends AppCompatActivity implements SearchView.OnQuer
         getMenuInflater().inflate(R.menu.menu_search, menu);
         final MenuItem item = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setQueryHint("Cari Nama Alumni");
+        searchView.setQueryHint("Cari Alumni");
         searchView.setIconified(false);
         searchView.setOnQueryTextListener(this);
         return true;
