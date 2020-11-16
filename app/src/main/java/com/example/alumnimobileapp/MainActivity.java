@@ -110,7 +110,13 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isPhoneNumberValid(String number)
     {
-        return android.util.Patterns.PHONE.matcher(number).matches();
+        if (number.length() <= 13
+                && number.length() >= 10
+                && android.util.Patterns.PHONE.matcher(number).matches()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
