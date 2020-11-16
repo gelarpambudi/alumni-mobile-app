@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,33 +44,39 @@ public class UpdateActivity extends AppCompatActivity {
         String no_hp = editTextHP.getText().toString();
         String email = editTextEmail.getText().toString();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        if (isEmailValid(email)) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        RegisterAPI api = retrofit.create(RegisterAPI.class);
-        Call<Value> call = api.update(nama, angkatan, no_hp, email);
+            RegisterAPI api = retrofit.create(RegisterAPI.class);
+            Call<Value> call = api.update(nama, angkatan, no_hp, email);
 
-        call.enqueue(new Callback<Value>() {
-            @Override
-            public void onResponse(Call<Value> call, Response<Value> response) {
-                String value = response.body().getValue();
-                String message = response.body().getMessage();
-                progress.dismiss();
-                if (value.equals("1")) {
-                    Toast.makeText(UpdateActivity.this, message, Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(UpdateActivity.this, message, Toast.LENGTH_SHORT).show();
+            call.enqueue(new Callback<Value>() {
+                @Override
+                public void onResponse(Call<Value> call, Response<Value> response) {
+                    String value = response.body().getValue();
+                    String message = response.body().getMessage();
+                    progress.dismiss();
+                    if (value.equals("1")) {
+                        Toast.makeText(UpdateActivity.this, message, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(UpdateActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Value> call, Throwable t) {
-                progress.dismiss();
-                Toast.makeText(UpdateActivity.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Value> call, Throwable t) {
+                    progress.dismiss();
+                    Toast.makeText(UpdateActivity.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
+            progress.dismiss();
+            Toast.makeText(UpdateActivity.this, "Format Email Salah", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -100,4 +109,25 @@ public class UpdateActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public boolean isEmailValid(String email){
+        String regexExpression =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(regexExpression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
+
 }
