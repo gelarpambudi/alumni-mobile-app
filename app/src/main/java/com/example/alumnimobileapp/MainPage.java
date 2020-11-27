@@ -12,7 +12,7 @@ import butterknife.OnClick;
 public class MainPage extends AppCompatActivity {
 
     @OnClick(R.id.buttonDaftar) void daftar() {
-        startActivity(new Intent(MainPage.this, MainActivity.class));
+        startActivity(new Intent(MainPage.this, RegisterActivity.class));
     }
 
     @OnClick(R.id.buttonLihat) void lihat() {

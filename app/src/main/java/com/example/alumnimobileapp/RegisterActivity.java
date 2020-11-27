@@ -3,7 +3,6 @@ package com.example.alumnimobileapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     public static final String URL = "https://gpa-alumni.000webhostapp.com/";
     private ProgressDialog progress;
@@ -60,28 +59,28 @@ public class MainActivity extends AppCompatActivity {
                     String message = response.body().getMessage();
                     progress.dismiss();
                     if (value.equals("1")) {
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Value> call, Throwable t) {
                     progress.dismiss();
-                    Toast.makeText(MainActivity.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
                 }
             });
 
         } else if ((isEmailValid(email) == false) && isPhoneNumberValid(no_hp)){
             progress.dismiss();
-            Toast.makeText(MainActivity.this, "Format Email Salah", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Format Email Salah", Toast.LENGTH_SHORT).show();
         } else if (isEmailValid(email)  && (isPhoneNumberValid(no_hp) == false)){
             progress.dismiss();
-            Toast.makeText(MainActivity.this, "Format Nomor HP Salah", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Format Nomor HP Salah", Toast.LENGTH_SHORT).show();
         } else if ((isEmailValid(email) == false) && (isPhoneNumberValid(no_hp) == false)){
             progress.dismiss();
-            Toast.makeText(MainActivity.this, "Format Email dan Nomor HP Salah", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Format Email dan Nomor HP Salah", Toast.LENGTH_SHORT).show();
         }
 
 
